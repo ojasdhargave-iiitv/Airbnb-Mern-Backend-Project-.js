@@ -1,10 +1,12 @@
 const express=require('express');
 const path=require('path');
 
+
 //local modules
-const userRouter = require('./routes/userRouter');
-const {hostRouter,registerdhomes} = require('./routes/hostRouter');
+const storeRouter = require('./routes/storeRouter');
+const hostRouter = require('./routes/hostRouter');
 const rootdir = require('./utils/pathutil');
+const errorcontroller=require('./controllers/error')
 
 
 const app=express();
@@ -21,12 +23,10 @@ app.use((req,res,next)=>{
 
 app.use(express.urlencoded());
 
-app.use(userRouter);
+app.use(storeRouter);
 app.use("/host",hostRouter);
 
-app.use((req,res,next)=>{
-    res.status(404).render('404',{pageTitle:'404 Not Found '});
-})
+app.use(errorcontroller.pagenotfound);
 
 const PORT=5000;
 app.listen(PORT,()=>{

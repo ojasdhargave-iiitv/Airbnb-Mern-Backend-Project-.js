@@ -1,7 +1,11 @@
   <header class="bg-white shadow-md py-6 px-8 flex items-center justify-between">
-      <h1 class="text-5xl font-extrabold text-red-500 tracking-tight">Welcome to Airbnb</h1>
+      <a href="/" class="text-5xl font-extrabold text-red-500 tracking-tight">Welcome to Airbnb</a>
       <nav>
-        <a href="/" class="text-gray-700 font-medium mr-2 <%=currentPage==='home'?'text-white bg-red-400 px-2 py-2 rounded-lg': 'hover:bg-red-400' %>">Home</a>
+        <a href="/" class="text-gray-700 font-medium mr-2 <%=currentPage==='Index'?'text-white bg-red-400 px-2 py-2 rounded-lg': 'hover:bg-red-400' %>">Airbnb</a>
+        <a href="/homes" class="text-gray-700 font-medium mr-2 <%=currentPage==='home-list'?'text-white bg-red-400 px-2 py-2 rounded-lg': 'hover:bg-red-400' %>">Home-list</a>
         <a href="/host/add-homes" class="text-gray-700 font-medium <%=currentPage==='add-home'?'text-white bg-red-400 px-2 py-2 rounded-lg': 'hover:bg-red-400' %>">Add Homes</a>
+        <a href="/favourites" class="text-gray-700 font-medium <%=currentPage==='favourites'?'text-white bg-red-400 px-2 py-2 rounded-lg': 'hover:bg-red-400' %>">Favourites</a>
+        <a href="/bookings" class="text-gray-700 font-medium <%=currentPage==='bookings'?'text-white bg-red-400 px-2 py-2 rounded-lg': 'hover:bg-red-400' %>">Bookings</a>
+        <a href="/host/host-home-list" class="text-gray-700 font-medium <%=currentPage==='host-home-list'?'text-white bg-red-400 px-2 py-2 rounded-lg': 'hover:bg-red-400' %>">Host Homes</a>
       </nav>
     </header>

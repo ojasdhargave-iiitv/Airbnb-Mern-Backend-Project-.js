@@ -3,16 +3,10 @@ const path=require('path');
 const hostRouter=express.Router();
 const rootdir = require('../utils/pathutil');
 
-hostRouter.get("/add-homes",(req,res,next)=>{
-    res.render('add-home',{pageTitle:'Add homes',currentPage:'add-home'});
-})
+const hostcontroller=require('../controllers/hostcontroller');
 
-const registeredhomes=[];
-hostRouter.post("/add-homes",(req,res,next)=>{
-    console.log(req.body);
-    registeredhomes.push(req.body);
-    res.render('home-added',{pageTitle:'Home Added Successfully',currentPage:'home-added'});
-})
+hostRouter.get("/add-homes",hostcontroller.getaddhomes);
+hostRouter.post("/add-homes",hostcontroller.postaddhomes);
+hostRouter.get("/host-home-list",hostcontroller.gethosthomes);
 
-exports.hostRouter=hostRouter;
-exports.registeredhomes=registeredhomes;
+module.exports=hostRouter;
