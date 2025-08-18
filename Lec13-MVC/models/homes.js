@@ -15,7 +15,7 @@ module.exports=class Home{
     }
 
     save(){
-        this.fetchAll(registeredhomes=>{
+        Home.fetchAll(registeredhomes=>{
             registeredhomes.push(this);
             const homesdatapath=path.join(rootdir,'data','homes.json');
             fs.writeFile(homesdatapath, JSON.stringify(registeredhomes),err=>{
