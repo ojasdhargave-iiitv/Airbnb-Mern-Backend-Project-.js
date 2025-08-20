@@ -23,8 +23,18 @@ exports.getindex = (req, res, next) => {
     });
   });
 };
+
+
 exports.getfavourites=((req,res,next)=>{
-     res.render('store/favourites', {pageTitle:'My favourites',currentPage:'favourites'});
+    Favourite.getfavourites(favourites=>{
+      Home.fetchAll(registeredhomes=>{
+        const favouritehomes= registeredhomes.filter(home=>{
+          return favourites.includes(home.id);
+        })
+         res.render('store/favourites', {favouritehomes:favouritehomes, pageTitle:'My favourites',currentPage:'favourites'});
+      })
+    })
+    
 })
 
 exports.postaddfavourites = (req, res, next) => {
@@ -36,6 +46,17 @@ exports.postaddfavourites = (req, res, next) => {
     res.redirect('/favourites');
   });
 };
+
+exports.postdelfavourites = (req, res, next) => {
+  const homeId = req.params.homeId;
+  Favourite.deletefavourites(homeId, (err) => {
+    if (err) {
+      console.error('Failed to delete favourite:', err);
+    }
+    res.redirect('/favourites');
+  });
+};
+
 exports.gethomedetails=((req,res,next)=>{
   const homeId=req.params.homeId;
 
@@ -49,3 +70,4 @@ exports.gethomedetails=((req,res,next)=>{
     }
   })
 })
+

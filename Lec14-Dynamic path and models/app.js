@@ -17,7 +17,7 @@ app.set('views','views');
 app.use(express.static(path.join(rootdir,'public')))
 
 app.use((req,res,next)=>{
-    console.log(`Request Received: ${req.method} ${req.url}`); // This log is helpful
+    // console.log(`Request Received: ${req.method} ${req.url}`); // This log is helpful
     next();
 })
 
