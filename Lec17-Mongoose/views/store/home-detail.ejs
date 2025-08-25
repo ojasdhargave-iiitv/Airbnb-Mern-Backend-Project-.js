@@ -1,0 +1,75 @@
+<%- include('../partials/pageTitle')%>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <%- include('../partials/nav')%>
+  <main class="mt-20">
+
+    <h2 class="text-2xl font-bold text-red-500 mb-6 text-center">Here are our Registered Homes:</h2>
+
+    <!-- Wrapper -->
+    <div class=" ml-8  bg-white rounded-2xl shadow-lg w-full max-w-6xl mx-auto overflow-hidden">
+      
+      <!-- Image Section -->
+      <div class=" ml-8  w-full h-80 overflow-hidden">
+        <img src="<%= home.photo %>" 
+             alt="<%= home.houseName %>" 
+             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+      </div>
+
+      <!-- Content Section -->
+      <div class=" ml-8 p-6 md:p-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Left Content -->
+        <div class=" ml-8 md:col-span-2">
+          <h1 class="text-3xl font-bold text-gray-800 mb-2"><%= home.houseName %></h1>
+          <p class="text-gray-500 text-lg mb-4"><%= home.location %></p>
+          
+          <!-- Rating -->
+          <div class=" ml-8 flex items-center mb-4">
+            <span class="text-yellow-500 text-xl">★</span>
+            <span class="ml-2 text-gray-700 font-medium text-lg"><%= home.rating %> / 5</span>
+          </div>
+
+          <!-- Description -->
+          <p class=" ml-8 text-gray-600 leading-relaxed mb-6">
+            Welcome to <%= home.houseName %>! Experience comfort and style in this cozy home located in 
+            <%= home.location %>. Perfect for weekend getaways or long stays with family and friends.
+          </p>
+
+          <!-- Amenities -->
+          <h2 class=" ml-8 text-xl font-semibold text-gray-800 mb-3">Amenities</h2>
+          <ul class=" mb-8 grid grid-cols-2 sm:grid-cols-3 gap-2 text-gray-600">
+            <li>🛏️ 2 Bedrooms</li>
+            <li>🛁 1 Bathroom</li>
+            <li>🍳 Kitchen</li>
+            <li>📶 Free WiFi</li>
+            <li>🚗 Parking</li>
+            <li>❄️ Air Conditioning</li>
+          </ul>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class=" ml-8 bg-gray-50 rounded-xl p-6 shadow-inner flex flex-col justify-items-stretch">
+          <div>
+            <p class="text-2xl font-bold text-red-500">
+              ₹<%= home.price %> <span class="text-gray-500 text-sm">/ night</span>
+            </p>
+            <p class="text-sm text-gray-500 mb-6">Includes taxes & fees</p>
+          </div>
+
+          <!-- CTA -->
+          <button class="mt-50 mb-8 bg-red-500 text-white py-3 px-6 rounded-xl font-semibold shadow-lg hover:bg-red-600 transition">
+            Book Now
+          </button>
+
+          <%- include('../partials/favourites',{home})%>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-24 py-6 text-center text-gray-500 text-sm">
+    &copy; 2025 Airbnb Clone. All rights reserved.
+  </footer>
+</body>
+</html>
